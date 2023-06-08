@@ -1,2 +1,7 @@
-loq: main.c loq_add.c loq_list.c Itoa/itoa.c
-	cc -s -z norelro -z noseparate-code -o loq main.c loq_list.c loq_add.c Itoa/itoa.c
+loq: main.o loq_add.o loq_list.o Itoa/itoa.o
+	$(CC) -s -z norelro -z noseparate-code -o loq main.o loq_list.o loq_add.o Itoa/itoa.o
+
+clean:
+	rm -rf Itoa/itoa.o *.o loq
+
+.PHONY: clean
