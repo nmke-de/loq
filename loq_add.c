@@ -8,12 +8,18 @@
 #define fdprint(fd, str) write((fd), (str), strlen((str)))
 
 void loq_add(char *msg) {
-	// TODO Create file on first write
+	// Fetch current time.
 	time_t now = time(NULL);
-	int fd = open("testloq", O_WRONLY | O_APPEND);
+
+	// Open file. Create if it doesn't exist.
+	int fd = open("testloq", O_CREAT | O_WRONLY | O_APPEND, 0644);
+
+	// Write message to file.
 	fdprint(fd, itoa(now, 10));
 	fdprint(fd, "\t");
 	fdprint(fd, msg);
 	fdprint(fd, "\n");
+
+	// Close file.
 	close(fd);
 }
