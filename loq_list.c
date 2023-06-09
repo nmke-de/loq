@@ -27,7 +27,11 @@ void loq_list() {
 	int fd = open(filename, O_RDONLY);
 	
 	// Title
-	print("# Loq\n\n");
+	char *title = getenv("LOQTITLE");
+	if (title == NULL)
+		print("# Loq\n\n");
+	else
+		println("# ", title, "\n");
 
 	// Read file
 	automaton_state s = timestamp;
