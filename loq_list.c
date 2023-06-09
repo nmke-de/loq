@@ -54,7 +54,6 @@ void loq_list() {
 					CLEARBUF
 					i = 0;
 					s = message;
-					// TODO Title for day
 					tm = localtime(&current);
 					if (tm->tm_year != lastyear || tm->tm_mon != lastmonth || tm->tm_mday != lastday) {
 						lastyear = tm->tm_year;
@@ -67,12 +66,11 @@ void loq_list() {
 							print("0");
 						print(itoa(tm->tm_mon + 1, 10));
 						print("-");
-						if (tm->tm_mday < 9)
+						if (tm->tm_mday < 10)
 							print("0");
 						print(itoa(tm->tm_mday, 10));
 						print("\n\n");
 					}
-					//printb(1, '\t', true);
 					break;
 				default:
 					s = invalid;
