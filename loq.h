@@ -14,6 +14,8 @@ void loq_list();
 void printb(int, char, bool);
 char readc(int);
 
+extern char **environ;
+
 #ifdef __cplusplus
 }
 #endif

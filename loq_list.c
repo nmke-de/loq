@@ -17,9 +17,15 @@ typedef enum {
 } automaton_state;
 
 void loq_list() {
-	// TODO implement
+	// Get filename
+	char *filename = getenv("LOQFILE");
+	if (filename == NULL) {
+		print("Please set the LOQFILE environment variable.\n");
+		_exit(2);
+	}
+
 	// Open file
-	int fd = open("testloq", O_RDONLY);
+	int fd = open(filename, O_RDONLY);
 	
 	// Title
 	print("# Loq\n\n");
