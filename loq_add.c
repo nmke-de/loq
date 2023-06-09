@@ -4,6 +4,7 @@
 #include <time.h>
 #include <unistd.h>
 #include "Itoa/itoa.h"
+#include "print/print.h"
 #include "loq.h"
 
 #define fdprint(fd, str) write((fd), (str), strlen((str)))
@@ -15,7 +16,7 @@ void loq_add(char *msg) {
 	// Get filename
 	char *filename = getenv("LOQFILE");
 	if (filename == NULL) {
-		fdprint(1, "Please set the LOQFILE environment variable.\n");
+		print("Please set the LOQFILE environment variable.\n");
 		_exit(2);
 	}
 
@@ -23,10 +24,7 @@ void loq_add(char *msg) {
 	int fd = open(filename, O_CREAT | O_WRONLY | O_APPEND, 0644);
 
 	// Write message to file.
-	fdprint(fd, itoa(now, 10));
-	fdprint(fd, "\t");
-	fdprint(fd, msg);
-	fdprint(fd, "\n");
+	fdprintv(fd, cargs(itoa(now, 10), "\t", msg, "\n"));
 
 	// Close file.
 	close(fd);
