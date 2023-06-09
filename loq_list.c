@@ -4,11 +4,10 @@
 #include <time.h>
 #include <unistd.h>
 #include "Itoa/itoa.h"
+#include "print/print.h"
 #include "loq.h"
 
 #define CLEARBUF for (int i = 0; i < 21; i++) buf[i] = 0;
-
-#define print(str) write(1, (str), strlen((str)))
 
 typedef enum {
 	invalid,
@@ -39,6 +38,7 @@ void loq_list() {
 	time_t current = 0;
 	struct tm *tm;
 	int lastyear = 1970, lastmonth = 0, lastday = 1;
+	char cyear[5], cmonth[3], cday[3];
 	for (char c = readc(fd); c != -1; c = readc(fd)) {
 		if (s == timestamp)
 			switch (c) {
@@ -65,17 +65,20 @@ void loq_list() {
 						lastyear = tm->tm_year;
 						lastmonth = tm->tm_mon;
 						lastday = tm->tm_mday;
-						print("## ");
-						print(itoa(1900 + tm->tm_year, 10));
-						print("-");
-						if (tm->tm_mon < 9)
-							print("0");
-						print(itoa(tm->tm_mon + 1, 10));
-						print("-");
-						if (tm->tm_mday < 10)
-							print("0");
-						print(itoa(tm->tm_mday, 10));
-						print("\n\n");
+						strncpy(cyear, itoa(1900 + tm->tm_year, 10), 5);
+						strncpy(cmonth, itoa(tm->tm_mon + 1, 10), 3);
+						if (tm->tm_mon < 9) {
+							cmonth[2] = cmonth[1];
+							cmonth[1] = cmonth[0];
+							cmonth[0] = '0';
+						}
+						strncpy(cday, itoa(tm->tm_mday, 10), 3);
+						if (tm->tm_mday < 10) {
+							cday[2] = cday[1];
+							cday[1] = cday[0];
+							cday[0] = '0';
+						}
+						println("## ", cyear, "-", cmonth, "-", cday, "\n");
 					}
 					break;
 				default:
