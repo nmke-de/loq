@@ -5,8 +5,14 @@
 extern "C" {
 #endif
 
+#define bool int
+#define true 1
+#define false 0
+
 void loq_add(char *);
 void loq_list();
+void printb(int, char, bool);
+char readc(int);
 
 #ifdef __cplusplus
 }
