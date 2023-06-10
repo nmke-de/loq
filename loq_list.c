@@ -19,12 +19,16 @@ void loq_list() {
 	// Get filename
 	char *filename = getenv("LOQFILE");
 	if (filename == NULL) {
-		print("Please set the LOQFILE environment variable.\n");
+		log("Please set the LOQFILE environment variable.\n");
 		_exit(2);
 	}
 
 	// Open file
 	int fd = open(filename, O_RDONLY);
+	if (fd < 0) {
+		logln("Error when opening file '", filename, "'.");
+		_exit(3);
+	}
 	
 	// Title
 	char *title = getenv("LOQTITLE");
