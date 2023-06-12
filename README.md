@@ -29,6 +29,10 @@ Type `make`.
 
 ## Usage
 
+To use Loq, set the path of the file governed by Loq in `LOQFILE`, i.e. write `export LOQFILE=$HOME/.cache/loqfile` in your profile or bashrc. Other optional environment variables which govern Loq's behaviour include:
+
+- `LOQTITLE`, which sets the title which is displayed when all diary entries are listed.
+
 ```bash
 # Add a new diary entry
 
