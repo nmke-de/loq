@@ -7,14 +7,19 @@
 #include "print/print.h"
 #include "loq.h"
 
+// Initialize buffer with zeros.
 #define CLEARBUF for (int i = 0; i < 21; i++) buf[i] = 0;
 
+// Needed for parsing
 typedef enum {
 	invalid,
 	timestamp,
 	message
 } automaton_state;
 
+/*
+This procedure prints the log from LOQFILE to the screen, nicely formatted as Markdown.
+*/
 void loq_list() {
 	// Get filename
 	char *filename = getenv("LOQFILE");

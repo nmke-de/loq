@@ -7,6 +7,9 @@
 #include "print/print.h"
 #include "loq.h"
 
+/*
+This procedure takes a message msg and writes it, together with a timestamp, to the LOQFILE.
+*/
 void loq_add(char *msg) {
 	// Fetch current time.
 	time_t now = time(NULL);
