@@ -7,8 +7,6 @@
 #include "print/print.h"
 #include "loq.h"
 
-#define fdprint(fd, str) write((fd), (str), strlen((str)))
-
 void loq_add(char *msg) {
 	// Fetch current time.
 	time_t now = time(NULL);
