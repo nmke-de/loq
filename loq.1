@@ -1,0 +1,51 @@
+.TH LOQ 1
+.SH NAME
+loq \- LOg Quickly your daily events, without wasting a lot of time doing so.
+.SH SYNOPSIS
+.SY loq
+.YS
+.SY loq
+.OP MESSAGE...
+.YS
+.SH DESCRIPTION
+.B loq
+is a diary program. Instead of writing paragraphs and entire essays on what happened during the day in one bulk, this program allows one to write one-liners whenever the need or wish arises.
+.PP
+To use
+.B loq
+, set the path of the file governed by loq in the \fILOQFILE\fP variable.
+.SH USAGE
+.TP
+.B loq
+without arguments will print the entire diary at \fILOQFILE\fP to screen, formatted as Markdown.
+.TP
+.B loq
+with a message (possibly spanning multiple arguments) will append a new one-line entry to the diary file at \fILOQFILE\fP to screen.
+.SH ENVIRONMENT VARIABLES
+.TP
+.B LOQFILE
+stores the location of the file where loq stores its data. This could be, for example
+.EX
+$HOME/.local/share/loqfile
+.EE
+or
+.EX
+$XDG_DATA_HOME/loqfile
+.EE
+.TP
+.B LOQTITLE
+stores the title that will be displayed when the \fILOQFILE\fP is printed to screen.
+.SH FILE FORMAT
+Each line contains a number, representing the number of seconds since Unix Epoch
+(1st Jan 1970 12am UTC), followed by a tab and a string of indefinitely many characters, representing the diary entry.
+.PP
+For example, the following line is a valid entry for scalp:
+.EX
+1660035600	Something happened!!
+.EE
+.PP
+The file must end on a newline.
+.SH FURTHER READING
+More information can be found on 
+.UR https://github.com/nmke-de/loq
+.UE .
