@@ -9,5 +9,6 @@ clean:
 
 install: loq
 	install loq /usr/local/bin
+	install loq.1 /usr/share/man/man1
 
 .PHONY: clean install
