@@ -14,7 +14,9 @@
 typedef enum {
 	invalid,
 	timestamp,
-	message
+	message,
+	// newline = message or timestamp
+	newline
 } automaton_state;
 
 /*
@@ -53,7 +55,7 @@ void loq_list() {
 	int lastyear = 1970, lastmonth = 0, lastday = 1;
 	char cyear[5], cmonth[3], cday[3];
 	for (char c = readc(fd); c != -1; c = readc(fd)) {
-		if (s == timestamp)
+		if (s == newline || s == timestamp)
 			switch (c) {
 				case '0':
 				case '1':
@@ -95,7 +97,15 @@ void loq_list() {
 					}
 					break;
 				default:
-					s = invalid;
+					if (s == newline) {
+						for (int j = 0; j <= i; j++)
+							printb(1, buf[j], false);
+						printb(1, c, false);
+						CLEARBUF
+						i = 0;
+						s = message;
+					} else
+						s = invalid;
 					continue;
 			}
 		else if (s == message)
@@ -103,7 +113,7 @@ void loq_list() {
 				case '\n':
 					printb(1, c, true);
 					print("\n");
-					s = timestamp;
+					s = newline;
 					break;
 				case '\0':
 					printb(1, c, true);
