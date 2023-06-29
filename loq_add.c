@@ -17,7 +17,7 @@ void loq_add(char *msg) {
 	// Get filename
 	char *filename = getenv("LOQFILE");
 	if (filename == NULL) {
-		print("Please set the LOQFILE environment variable.\n");
+		log("Please set the LOQFILE environment variable.\n");
 		_exit(2);
 	}
 
