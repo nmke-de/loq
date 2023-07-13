@@ -27,6 +27,8 @@ Make sure to have all submodules installed.
 
 Type `make`.
 
+To install, type `make install`.
+
 ## Usage
 
 To use Loq, set the path of the file governed by Loq in `LOQFILE`, i.e. write `export LOQFILE=$HOME/.local/share/loqfile` in your profile or bashrc. Other optional environment variables which govern Loq's behaviour include:
