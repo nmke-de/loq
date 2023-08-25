@@ -6,7 +6,7 @@
 /*
 read a single character from file with file descriptor fd. If no characters could be read, then return -1.
 */
-char readc(int fd) {
+int readc(int fd) {
 	static char c[BUFLEN];
 	static int ptr = BUFLEN;
 	static int rl = BUFLEN;

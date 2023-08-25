@@ -54,7 +54,7 @@ void loq_list() {
 	struct tm *tm;
 	int lastyear = 1970, lastmonth = 0, lastday = 1;
 	char cyear[5], cmonth[3], cday[3];
-	for (char c = readc(fd); c != -1; c = readc(fd)) {
+	for (int c = readc(fd); c != -1; c = readc(fd)) {
 		if (s == newline || s == timestamp)
 			switch (c) {
 				case '0':
