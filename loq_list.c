@@ -98,7 +98,7 @@ void loq_list() {
 					break;
 				default:
 					if (s == newline) {
-						for (int j = 0; j <= i; j++)
+						for (int j = 0; j < i; j++)
 							printb(1, buf[j], false);
 						printb(1, c, false);
 						CLEARBUF
