@@ -111,8 +111,8 @@ void loq_list() {
 		else if (s == message)
 			switch (c) {
 				case '\n':
-					printb(1, c, true);
-					print("\n");
+					printb(1, c, false);
+					printb(1, '\n', true);
 					s = newline;
 					break;
 				case '\0':
