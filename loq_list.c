@@ -127,6 +127,9 @@ void loq_list() {
 			break;
 	}
 
+	// Print final buffer
+	printb(1, -1, true);
+
 	// Close file
 	close(fd);
 
