@@ -93,6 +93,7 @@ void loq_list() {
 							cday[1] = cday[0];
 							cday[0] = '0';
 						}
+						printb(1, -1, true);
 						println("## ", cyear, "-", cmonth, "-", cday, "\n");
 					}
 					break;
@@ -112,7 +113,7 @@ void loq_list() {
 			switch (c) {
 				case '\n':
 					printb(1, c, false);
-					printb(1, '\n', true);
+					printb(1, '\n', false);
 					s = newline;
 					break;
 				case '\0':
