@@ -11,7 +11,7 @@ extern "C" {
 
 void loq_add(char *);
 void loq_list();
-void printb(int, char, bool);
+void printb(int, int, bool);
 int readc(int);
 
 extern char **environ;

@@ -7,12 +7,12 @@
 /*
 put characters into a buffer and then print to fd
 */
-void printb(int fd, char in, bool force) {
+void printb(int fd, int in, bool force) {
 	static char c[BUFLEN];
 	static int ptr = 0;
 	// Only append buffer if meaningful character was provided.
 	if (in != -1)
-		c[ptr++] = in;
+		c[ptr++] = (char) in;
 	if (force || ptr == BUFLEN) {
 		write(fd, c, ptr);
 		ptr = 0;
